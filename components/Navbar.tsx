@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Navbar({}){
 
-  const user = true;
-  const username = true;
+  const user = false;
+  const username = false;
 
   return(
     <nav className="navbar">
@@ -23,7 +24,7 @@ export default function Navbar({}){
           </li>
           <li>
           <Link href={`/${username}`} passHref>
-              <img src={user?.photoURL}></img>
+              <Image width={200} height={200} alt={'user icon'} src={user?.photoURL}></Image>
             </Link>
           </li>
           </>
