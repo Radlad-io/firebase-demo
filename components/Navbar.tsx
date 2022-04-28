@@ -9,38 +9,38 @@ export default function Navbar({}){
 
   return(
     <nav className="navbar">
-      <ul>
-        <li>
-          <Link href={"/"} passHref>
-            <button className="btn-logo">FEED</button>
-          </Link>
-        </li>
-        {/* Renders if user is signed in and has username */}
-        {username && (
-          <>
+    <ul>
+      <li>
+        <Link href="/" passHref>
+          <button className="btn-logo">FEED</button>
+        </Link>
+      </li>
+
+      {/* user is signed-in and has username */}
+      {user && (
+        <>
           <li className="push-left">
-            <Link href={`/admin`} passHref>
-              <button className="btn-blue">Write Post</button>
+            <Link href="/admin" passHref>
+              <button className="btn-blue">Write Posts</button>
             </Link>
           </li>
           <li>
             <Link href={`/${username}`} passHref>
-              <img src={user?.photoURL}></img>
+              <Image src={user?.photoURL} width={50} height={50} alt={'user'}/>
             </Link>
           </li>
-          </>
-        )}
-        {/* Renders if user is not signed or has not created a username */}
-        {!username && (
-          <>
-            <li>
-              <Link href={`/enter`} passHref>
-                <button className="btn-blue">Log in</button>
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+        </>
+      )}
+
+      {/* user is not signed OR has not created username */}
+      {!user && (
+        <li>
+          <Link href="/enter" passHref>
+            <button className="btn-blue">Log in</button>
+          </Link>
+        </li>
+      )}
+    </ul>
+  </nav>
   )
 }
